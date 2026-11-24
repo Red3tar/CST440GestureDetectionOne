@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hand Gesture Detector</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.4.1675469240/hands.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header>
+    <h1>Hand gesture detector</h1>
+    <p>Start with an open right hand, then move into one of the five gestures.</p>
+  </header>
+
+  <main>
+    <section class="stage">
+      <canvas id="view" width="512" height="512" aria-label="Camera view with hand landmarks"></canvas>
+      <p id="camInfo" class="note">Camera not started.</p>
+      <button id="startBtn" type="button">Start camera</button>
+    </section>
+
+    <section class="panel">
+      <h2>Detected gesture</h2>
+      <p id="result" class="result">–</p>
+      <p id="confidence" class="note">Waiting for a hand.</p>
+      <ul id="bars" class="bars"></ul>
+
+      <h2>Hand coordinates</h2>
+      <table class="coords">
+        <thead><tr><th>Point</th><th>x</th><th>y</th><th>z</th></tr></thead>
+        <tbody id="coordRows"></tbody>
+      </table>
+
+      <h2>Record training data</h2>
+      <div class="record">
+        <label>Gesture
+          <select id="labelSelect"></select>
+        </label>
+        <label>Person
+          <input id="userId" value="user1" size="8">
+        </label>
+        <button id="recordBtn" type="button" disabled>Record sample</button>
+      </div>
+      <p id="recordStatus" class="note">Press Record, wait for the countdown, then go from open hand to the gesture.</p>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
